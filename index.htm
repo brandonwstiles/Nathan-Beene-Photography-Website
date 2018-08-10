@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/mainCSS.css">
+
+    <title>Nathan's Portfolio</title>
+</head>
+
+<body>
+    <div id="sidebar">
+        <h4>Nathan Beene</h4>
+        <p>Photography</p>
+        <div id="nav">
+            <ul>
+                <a href="#">Home</a>
+                <a href="#">Portfolio</a>
+                <a href="#">About</a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="img-row">
+            <div class="img-column"></div>
+            <div class="img-column"></div>
+            <div class="img-column"></div>
+            <div class="img-column"></div>
+            <div class="img-column"></div>
+        </div>
+
+        <div id="img-modal"></div>
+    </div>
+
+    <script>
+        var imgRows = 3;
+        var imgColumns = this.document.getElementsByClassName("img-column");
+        var imageNum = 0;
+        for (var i = 0; i < imgRows; i++) {
+            for (var j = 0; j < imgColumns.length; j++) {
+                var myImage = new Image();
+                var imgSrc = 'images/Nathan_Beenes_Photography' + imageNum + '.jpg';
+                myImage.src = imgSrc;
+
+                if (!myImage.onerror) {
+                    var copyImage = myImage.cloneNode(true);
+                    myImage.setAttribute("class", "baseImage");
+                    copyImage.setAttribute("class", "modalImage");
+
+                    imgColumns[i].appendChild(myImage);
+                    document.getElementById("img-modal").appendChild(copyImage);
+
+                    imageNum++;
+                }
+            }
+        }
+
+        document.getElementsByClassName("baseImage").addEventListener("click", expandModalImage);
+        var modalImages = document.getElementsByClassName("modalImage");
+
+        function expandModalImage() {
+            alert("Clicked");
+        }
+    </script>
+    <script type="text/javascript" src="scripts/mainJS.js"></script>
+</body>
+
+</html>
